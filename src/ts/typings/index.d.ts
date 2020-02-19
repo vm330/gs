@@ -23,7 +23,8 @@ export interface SharingOptions {
 }
 
 export interface Options {
-  defaultAttr: string
+  defaultAttr?: string
+  scrollElement?: string
   click?: ItemOptions[]
   appear?: ItemOptions[]
   hover?: ItemOptions[]

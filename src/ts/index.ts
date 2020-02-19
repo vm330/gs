@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 window.gs = {
   config (options: Options) {
-    const { defaultAttr = 'data-id', click = [], appear = [], hover = [], sharing = {} } = options
+    const { defaultAttr = 'data-id', scrollElement, click = [], appear = [], hover = [], sharing = {} } = options
 
     const clickFunc = getClick({ defaultAttr, clickArray: click, sharingOptions: sharing })
     const appearFunc = getAppear({ defaultAttr, appearArray: appear })
@@ -25,11 +25,12 @@ window.gs = {
       appearFunc()
       hoverFunc()
 
+      const _window = scrollElement ? document.querySelector(scrollElement) : window
       let timer: number
-      window.addEventListener('scroll', () => {
+
+      _window && _window.addEventListener('scroll', () => {
         clearTimeout(timer)
         timer = window.setTimeout(appearFunc, 100)
-        timer = window.setTimeout(hoverFunc, 100)
       })
     })
   },
