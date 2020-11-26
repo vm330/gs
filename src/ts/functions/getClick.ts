@@ -21,7 +21,9 @@ const getClick = ({ defaultAttr, clickArray, sharingOptions }: GetClickProps) =>
       }
 
       if (itemOptions) {
-        itemOptions.mark && analytics(itemOptions.mark)
+        if (itemOptions.mark) {
+          Array.isArray(itemOptions.mark) ? analytics(...itemOptions.mark) : analytics(itemOptions.mark)
+        }
         itemOptions.share && sharing(itemOptions, element, sharingOptions)
       }
     })

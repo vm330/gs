@@ -4,7 +4,7 @@ declare global {
       config(options: Options): void
       analytics: Analytics
     }
-    ga(s1: string, s2: string, s3: string): void
+    ga(...args: string[]): void
   }
 }
 
@@ -24,7 +24,6 @@ export interface SharingOptions {
 
 export interface Options {
   defaultAttr?: string
-  scrollElement?: string
   click?: ItemOptions[]
   appear?: ItemOptions[]
   hover?: ItemOptions[]
@@ -36,7 +35,7 @@ export interface SocialLinks {
 }
 
 export interface Analytics {
-  (mark: string): void
+  (...args: string[]): void
 }
 
 export interface GetMeta {
